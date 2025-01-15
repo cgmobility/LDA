@@ -24,29 +24,31 @@ get_cycle_net<-function(forceDownload = FALSE){
     
     kml_f <- download_kml_ciclo()
     
-    Sys.setenv(`ciclo_net_path`=list(path = kml_f,time = Sys.time()))
+    Sys.setenv(`ciclo_net_path`= kml_f)
+    Sys.setenv(`ciclo_net_time`= as.character(Sys.time()))
   }else{
     if(Sys.getenv('ciclo_net_path')==""){
       
       kml_f <- download_kml_ciclo()
-      
-      Sys.setenv(`ciclo_net_path`=list(path = kml_f,time = Sys.time()))
+      Sys.setenv(`ciclo_net_path`= kml_f)
+      Sys.setenv(`ciclo_net_time`= as.character(Sys.time()))
       
     }else{
-      if(as.numeric(Sys.time()-Sys.getenv('ciclo_net_path')$time, units = 'secs') > 3600){
+      if(as.numeric(Sys.time()-as.POSIXct(Sys.getenv('ciclo_net_time')), units = 'secs') > 3600){
         
         kml_f <- tryCatch({
           download_kml_ciclo()
         },error = function(e){
           message('Failed connection with mymaps, using cache data\n',e)
-          return(Sys.getenv('ciclo_net_path')$path)
+          return(Sys.getenv('ciclo_net_path'))
         })
         
-        Sys.setenv(`ciclo_net_path`=list(path = kml_f,time = Sys.time()))
+        Sys.setenv(`ciclo_net_path`= kml_f)
+        Sys.setenv(`ciclo_net_time`= as.character(Sys.time()))
         
         
       }else{
-        kml_f <- Sys.getenv('ciclo_net_path')$path
+        kml_f <- Sys.getenv('ciclo_net_path')
       }
       
     }
