@@ -1,19 +1,49 @@
-get_ciclo_net<-function(){
-  dir<-tempdir()
+get_ciclo_net<-function(forceDownload = FALSE){
   
-  dir <- paste0(dir,'\\',gsub('-|:|-','',Sys.time()))
-  dir.create(dir)
-  file1<-paste0(dir,'\\layer.kmz')
-  file.create(file1)
+  checkmate::assert_logical(forceDownload)
+  if(forceDownload){
+    dir<-tempdir()
+    
+    dir <- paste0(dir,'\\',gsub('-|:|-','',Sys.time()))
+    dir.create(dir)
+    file1<-paste0(dir,'\\layer.kmz')
+    file.create(file1)
+    
+    
+    httr::GET("http://maps.google.com/maps/ms?ie=UTF8&hl=en&vps=1&jsv=206b&msa=0&output=kml&msid=1eqNX-fl3ENPC8_1tqzbRDYZFQmA",
+              httr::write_disk(path = file1,overwrite = T))
+    
+    
+    utils::unzip(file1,exdir = dir)
+    
+    kml_f <- paste0(dir,"\\doc.kml")
+    
+    Sys.setenv(`ciclo_net_path`=list(path = kml_f,time = Sys.time()))
+  }else{
+    if(Sys.getenv('ciclo_net_path')=="" | as.numeric(Sys.time()-Sys.getenv('ciclo_net_path')$time, units = 'secs') > 3600){
+      dir<-tempdir()
+      
+      dir <- paste0(dir,'\\',gsub('-|:|-','',Sys.time()))
+      dir.create(dir)
+      file1<-paste0(dir,'\\layer.kmz')
+      file.create(file1)
+      
+      
+      httr::GET("http://maps.google.com/maps/ms?ie=UTF8&hl=en&vps=1&jsv=206b&msa=0&output=kml&msid=1eqNX-fl3ENPC8_1tqzbRDYZFQmA",
+                httr::write_disk(path = file1,overwrite = T))
+      
+      
+      utils::unzip(file1,exdir = dir)
+      
+      kml_f <- paste0(dir,"\\doc.kml")
+      
+      Sys.setenv(`ciclo_net_path`=list(path = kml_f,time = Sys.time()))
+      
+    }else{
+      kml_f <- Sys.getenv('ciclo_net_path')$path
+    }
+  }
   
-  
-  httr::GET("http://maps.google.com/maps/ms?ie=UTF8&hl=en&vps=1&jsv=206b&msa=0&output=kml&msid=1eqNX-fl3ENPC8_1tqzbRDYZFQmA",
-            httr::write_disk(path = file1,overwrite = T))
-  
-  
-  utils::unzip(file1,exdir = dir)
-  
-  kml_f <- paste0(dir,"\\doc.kml")
   
   layers <- st_layers(kml_f)
   
