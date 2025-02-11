@@ -17,7 +17,7 @@ get_layer <- function(nm_layer,base.path = .Options$lda_base.path,
     pattern = nm_layer,
     full.names = T,
     recursive = T
-  ) %>% return()
+  )[1] %>% return()
   
 }
 
