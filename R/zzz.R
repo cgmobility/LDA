@@ -19,5 +19,6 @@
     )
   )
   
-  
+  invisible(options(lda_base.path = '06_Eixo Dados'))
+  invisible(options(lda_layers.path = 'layers'))
 }
