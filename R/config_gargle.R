@@ -13,6 +13,9 @@ config_gargle_sheets <- function(
   if(length(path)==0){
     stop('Could not set the cache directory\n','Empty path')
   }
+  
+  library(googlesheets4)
+  
   options(gargle_oauth_cache = path)
   
   gs4_auth(
@@ -34,6 +37,8 @@ config_gargle_drive <- function(
   if(length(path)==0){
     stop('Could not set the cache directory\n','Empty path')
   }
+  
+  library(googledrive)
   
   options(
     gargle_oauth_email = TRUE,
