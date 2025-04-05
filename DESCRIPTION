@@ -3,9 +3,11 @@ Type: Package
 Title: Load data analysis.
 Version: 0.1.1
 Author: Gustavo Guimarães
-Maintainer: Gustavo Guimarães <gustavo234guimaraes@gmail.com>
+Maintainer: Gustavo Guimarães <caiogcg.mobilidade@gmail.com>
 Description: Really?
-Imports: KeyboardSimulator, sf, rjson, data.table, tidylog, lubridate, plotly, tidyverse, rstudioapi, readxl, scales, ggrepel, hrbrthemes, ggpubr, shadowtext, flextable
+Imports: KeyboardSimulator, sf, rjson, data.table, lubridate, plotly, tidyverse, rstudioapi, readxl, scales, ggrepel, hrbrthemes, ggpubr, shadowtext, ggspatial, janitor, ggimage, viridis, ggnewscale, ggsvg
+Remotes:coolbutuseless/ggsvg
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.3
