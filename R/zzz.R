@@ -6,7 +6,9 @@
       suppressWarnings(
         
         lapply(
-          c('sf', 'rjson', 'data.table', 'tidylog','plotly' ,'lubridate','scales', 'tidyverse', 'rstudioapi', 'readxl', 'ggrepel', 'hrbrthemes', 'ggpubr', 'shadowtext', 'flextable'),
+          c('sf', 'rjson', 'data.table', 'plotly' ,'lubridate','scales', 'tidyverse', 'rstudioapi',
+            'readxl', 'ggrepel', 'hrbrthemes', 'ggpubr', 'shadowtext', 'ggnewscale',
+            'janitor','ggsvg','viridis'),
           function(x){
             invisible(
               suppressPackageStartupMessages(
