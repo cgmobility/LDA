@@ -21,7 +21,6 @@
     )
   )
   
-  invisible(options(lda_base.path = '06_Eixo Dados'))
-  invisible(options(lda_layers.path = 'layers'))
+  invisible(options(lda_base.path = '2026_02 - Eusébio em Movimento'))
+  invisible(options(lda_layers.path = '2_Dados Gerais'))
 }
-
