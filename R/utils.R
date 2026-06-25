@@ -99,16 +99,6 @@ laranja_sarto<-function() "#F88A27"
     }) %>% unlist()
   }
   
-  wd<-function(){
-      if(.Platform$GUI=="RStudio"){
-        library(rstudioapi)
-        getActiveDocumentContext()$path %>%
-            dirname() %>%
-            setwd()
-      }else{
-        #setwd(tcltk::tk_choose.dir(caption = "Select WD"))
-      }
-  }
   
   
   flextheme<-function(x){
