@@ -5,7 +5,7 @@ Version: 0.1.1
 Author: Gustavo Guimarães
 Maintainer: Gustavo Guimarães <caiogcg.mobilidade@gmail.com>
 Description: Really?
-Imports: sf, rjson, data.table, lubridate, plotly, tidyverse, rstudioapi, readxl, scales, ggrepel, hrbrthemes, ggpubr, shadowtext, ggspatial, janitor, ggimage, viridis, ggnewscale, ggsvg
+Imports: KeyboardSimulator, sf, rjson, data.table, lubridate, plotly, tidyverse, rstudioapi, readxl, scales, ggrepel, ggpubr, shadowtext, ggspatial, janitor, ggimage, viridis, ggnewscale, ggsvg, this.path
 Remotes:coolbutuseless/ggsvg
 License: What license is it under?
 Encoding: UTF-8
