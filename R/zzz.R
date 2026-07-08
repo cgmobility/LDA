@@ -7,7 +7,7 @@
         
         lapply(
           c('sf', 'rjson', 'data.table', 'plotly' ,'lubridate','scales', 'tidyverse', 'rstudioapi',
-            'readxl', 'ggrepel'', 'ggpubr', 'shadowtext', 'ggnewscale',
+            'readxl', 'ggrepel', 'ggpubr', 'shadowtext', 'ggnewscale',
             'janitor','ggsvg','viridis'),
           function(x){
             invisible(
